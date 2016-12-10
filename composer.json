@@ -1,0 +1,8 @@
+{
+	"config": {
+        "vendor-dir": "lib"
+    },
+    "require": {
+        "intervention/image": "^2.3"
+    }
+}
