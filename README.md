@@ -6,7 +6,7 @@ Allows You to generate thumbnails in a very simple way
 REQUIREMENTS
 ------------
 
-The minimum requirement by this plugin that your Web server supports > PHP 5.4.0. and Joomla 3.x
+The minimum requirement by this plugin that your Web server supports PHP > 5.4.0. and Joomla 3.x
 
 
 USAGE
