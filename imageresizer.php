@@ -66,6 +66,7 @@ class plgSystemImageresizer extends JPlugin
                             $constraint->upsize();
                         });
                         $imgObject->save($thumb);
+                        $this->optimizeImage($thumb);
                     } else {
                         return $image;
                     }
@@ -76,6 +77,7 @@ class plgSystemImageresizer extends JPlugin
                             $constraint->upsize();
                         });
                         $imgObject->save($thumb);
+                        $this->optimizeImage($thumb);
                     } else {
                         return $image;
                     }
@@ -85,6 +87,7 @@ class plgSystemImageresizer extends JPlugin
                             $constraint->upsize();
                         });
                         $imgObject->save($thumb);
+                        $this->optimizeImage($thumb);
                     } else {
                         return $image;
                     }
@@ -95,19 +98,28 @@ class plgSystemImageresizer extends JPlugin
         }
 
         if (JFile::exists($thumb)) {
+            return str_replace(JPATH_ROOT . '/', '', $thumb);
+        } else {
+            return $image;
+        }
+    }
+
+
+    private function optimizeImage($image) {
+        if (JFile::exists($image)) {
 
             JPluginHelper::importPlugin('system');
             $dispatcher = JEventDispatcher::getInstance();
             
             try {
-                $dispatcher->trigger('compressImage', array('file' => $thumb));
+                $dispatcher->trigger('compressImage', array('file' => $image));
             } catch (Exception $e) {
                 // error;
             }
 
-            return str_replace(JPATH_ROOT . '/', '', $thumb);
+            return true;
         } else {
-            return $image;
+            return false;
         }
     }
 
