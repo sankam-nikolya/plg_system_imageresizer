@@ -41,7 +41,13 @@ class plgSystemImageresizer extends JPlugin
         $image_name = md5($image) . '.' . $image_ext;
 
         $thumbs_main_folder = JPATH_ROOT . '/cache/images/';
-        $thumb_folder = $thumbs_main_folder . $width . 'x' . $height . '/';
+
+        if(!empty($height)) {
+            $thumb_folder = $thumbs_main_folder . $width . 'x' . $height . '/';
+        } else {
+            $thumb_folder = $thumbs_main_folder . $width . '/';
+        }
+
         $thumb = $thumb_folder . $image_name;
 
         if (!JFile::exists($thumb)) {
