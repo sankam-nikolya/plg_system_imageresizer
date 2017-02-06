@@ -2,7 +2,7 @@
 /**
  * @package  plg_system_imageresizer
  *
- * @copyright   Copyright (C) 2011 - 2016 SNAKAM, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2011 - 2016 SANKAM, Inc. All rights reserved.
  * @license  GNU General Public License version 3 or later
  */
 
