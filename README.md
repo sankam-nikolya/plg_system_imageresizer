@@ -15,12 +15,26 @@ USAGE
 Install plugin
 
 ```php
-JPluginHelper::importPlugin('system');
-$dispatcher = JEventDispatcher::getInstance();
+
+$plugin = JPluginHelper::getPlugin('system', 'imageresizer');
+if(!empty($plugin)) {
+	// plugin installed and enabled
+	JPluginHelper::importPlugin('system');
+	$dispatcher = JEventDispatcher::getInstance();
+} else {
+	// plugin not installed or not enabled
+	$dispatcher = NULL;
+}
+
 
 $image = 'images/joomla_black.png';
 $width = 250; // thumb width in px
 $height = 187; // thumb height in px
 
-$thumb = reset($dispatcher->trigger('resizeImage', array('image' => $image, 'width' => $width, 'height' => $height)));
+if(!empty($dispatcher) {
+	$thumb = reset($dispatcher->trigger('resizeImage', array('image' => $image, 'width' => $width, 'height' => $height)));
+} else {
+	$thumb = $image;
+}
+
 ```
